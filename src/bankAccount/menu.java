@@ -1,11 +1,26 @@
 package bankAccount;
 
 import java.util.Scanner;
+import bankAccount.model.Account;
 import bankAccount.util.colors;
 
 public class menu {
 
 	public static void main(String[] args) {
+		
+		// Teste da classe Accont
+		Account ac1 = new Account(1, 123, 1, "Juliana", 10000.0f);
+		ac1.view();
+		ac1.withdrawal(12000.0f);
+		ac1.view();
+		ac1.deposit(5000.0f);
+		ac1.view();
+		
+//		System.out.println("Nome do titular: " + ac1.getAccountHolder());
+//		System.out.println("Saldo da conta: " + ac1.getBalance());
+//		
+//		ac1.setBalance(10000.0f);
+//		System.out.println("Saldo da conta: " + ac1.getBalance());
 		
 		Scanner scanner = new Scanner(System.in);
 		
