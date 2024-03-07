@@ -1,9 +1,8 @@
 package bankAccount.model;
 
-public class Account {
+public abstract class BankAccount {
 	
 	// Atributos / Caracteristicas
-	
 	// Encapsulamento: encapsular/proteger algo
 	// Private / Protected / Public / Friendly
 	
@@ -15,9 +14,8 @@ public class Account {
 	
 	
 	// Métodos Construtor: que auxilia na criação/intanciação de um objeto da classe
-	public Account(int accountNumber, int branch, int type, String accountHolder, float balance) {
+	public BankAccount(int accountNumber, int branch, int type, String accountHolder, float balance) {
 		// this(esta): representa o nome da própria classe (conta)
-		
 		this.number = accountNumber; //bankAccount.number recebe o valor do arg. number
 		this.branch = branch;
 		this.type = type;
