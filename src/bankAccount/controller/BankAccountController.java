@@ -1,10 +1,15 @@
 package bankAccount.controller;
 
+import java.util.ArrayList;
+
 import bankAccount.model.BankAccount;
 import bankAccount.repository.BankAccountRepository;
 
 public class BankAccountController implements BankAccountRepository{
-
+	
+	private ArrayList<BankAccount> listBankAccount = new ArrayList<BankAccount> ();
+	int number = 0;
+	
 	@Override
 	public void searchByNumber(int number) {
 		// TODO Auto-generated method stub
@@ -13,13 +18,18 @@ public class BankAccountController implements BankAccountRepository{
 
 	@Override
 	public void listAll() {
-		// TODO Auto-generated method stub
+		for (var account : listBankAccount) {
+			account.view();
+		}
 		
 	}
 
 	@Override
 	public void register(BankAccount bankAccount) {
-		// TODO Auto-generated method stub
+		listBankAccount.add(bankAccount);
+		System.out.println("\nA conta número: " + bankAccount.getNumber() + " foi criada com sucesso!");
+		
+		
 		
 	}
 
@@ -51,6 +61,10 @@ public class BankAccountController implements BankAccountRepository{
 	public void transfer(int originNumber, int destinationNumber, float value) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int generateNumber () {
+		return ++ number;
 	}
 	
 }
