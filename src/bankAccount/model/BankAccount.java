@@ -7,17 +7,17 @@ public abstract class BankAccount {
 	// Private / Protected / Public / Friendly
 	
 	private int number; 
-	private int branch;
+	private int numberAgency;
 	private int type;
 	private float balance;
 	private String accountHolder;
 	
 	
 	// Métodos Construtor: que auxilia na criação/intanciação de um objeto da classe
-	public BankAccount(int accountNumber, int branch, int type, String accountHolder, float balance) {
-		// this(esta): representa o nome da própria classe (conta)
+	public BankAccount(int accountNumber, int numberAgency, int type, String accountHolder, float balance) {
+		// this(esta): representa o nome da própria classe (conta)0
 		this.number = accountNumber; //bankAccount.number recebe o valor do arg. number
-		this.branch = branch;
+		this.numberAgency = numberAgency;
 		this.type = type;
 		this.accountHolder = accountHolder;
 		this.balance = balance;
@@ -28,17 +28,17 @@ public abstract class BankAccount {
 	public int getNumber() {
 		return number;
 	}
-	
-	public void setNumber(int accountNumber) {
-		this.number = accountNumber;
+
+	public void setNumber(int number) {
+		this.number = number;
 	}
 
-	public int getBranch() {
-		return branch;
+	public int getNumberAgency() {
+		return numberAgency;
 	}
 
-	public void setBranch(int branch) {
-		this.branch = branch;
+	public void setNumberAgency(int numberAgency) {
+		this.numberAgency = numberAgency;
 	}
 
 	public int getType() {
@@ -74,7 +74,7 @@ public abstract class BankAccount {
 			return true;
 		}
 	}
-	
+
 	public void deposit(float value) {
 		this.setBalance(this.getBalance() + value);
 	}
@@ -96,7 +96,7 @@ public abstract class BankAccount {
 		System.out.println("Dados da Conta:");
 		System.out.println("***********************************************************");
 		System.out.println("Numero da conta: " + this.number);
-		System.out.println("Agência: " + this.branch);
+		System.out.println("Agência: " + this.numberAgency);
 		System.out.println("Tipo da conta: " + type);
 		System.out.println("Titular: " + this.accountHolder);
 		System.out.println("Saldo: " + this.balance);

@@ -5,10 +5,10 @@ public class CurrentAccount extends BankAccount {
 
 	private float overdraftLimit; 
 	
-	public CurrentAccount(int accountNumber, int branch, int type, String accountHolder, float balance, float overdraftLimit) {
+	public CurrentAccount(int accountNumber, int numberAgency, int type, String accountHolder, float balance, float overdraftLimit) {
 		
 		// Método const. da super classe
-		super(accountNumber, branch, type, accountHolder, balance);
+		super(accountNumber, numberAgency, type, accountHolder, balance);
 		
 		//Atributo da classe
 		this.overdraftLimit = overdraftLimit;

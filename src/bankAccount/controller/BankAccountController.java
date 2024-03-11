@@ -12,7 +12,13 @@ public class BankAccountController implements BankAccountRepository{
 	
 	@Override
 	public void searchByNumber(int number) {
-		// TODO Auto-generated method stub
+		var account = searchInTheCollection(number);
+		
+		if(account != null) {
+			account.view();
+		} else {
+			System.out.println("\nA conta número: " + number + " não foi encontrada!");
+		}	
 		
 	}
 
@@ -28,21 +34,32 @@ public class BankAccountController implements BankAccountRepository{
 	public void register(BankAccount bankAccount) {
 		listBankAccount.add(bankAccount);
 		System.out.println("\nA conta número: " + bankAccount.getNumber() + " foi criada com sucesso!");
-		
-		
-		
 	}
 
 	@Override
 	public void update(BankAccount bankAccount) {
-		// TODO Auto-generated method stub
+		var searchBankAccount = searchInTheCollection(bankAccount.getNumber());
+		
+		if(searchBankAccount != null) {
+			listBankAccount.set(listBankAccount.indexOf(searchBankAccount), bankAccount);
+			System.out.println("\nA conta número: " + bankAccount.getNumber() + " foi atualizada com sucesso!");
+		} else {
+			System.out.println("\nA conta número " + bankAccount.getNumber() + " não foi encontrada!");
+		}
 		
 	}
 
 	@Override
 	public void delete(int number) {
-		// TODO Auto-generated method stub
+		var bankAccount = searchInTheCollection(number);
 		
+		if(bankAccount != null) {
+			if(listBankAccount.remove(bankAccount) == true) {
+				System.out.println("\nA conta número: " + number + " foi deletada com sucesso!");
+			}
+		} else {
+			System.out.println("\nA conta número: " + number + " não foi encontrada!");
+		}
 	}
 
 	@Override
@@ -62,9 +79,17 @@ public class BankAccountController implements BankAccountRepository{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	public int generateNumber () {
 		return ++ number;
 	}
 	
+	public BankAccount searchInTheCollection(int number) {
+		for (var account : listBankAccount) {
+			if(account.getNumber() == number) {
+				return account;
+			}
+		}
+		return null;
+	}
 }
