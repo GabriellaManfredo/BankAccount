@@ -64,19 +64,48 @@ public class BankAccountController implements BankAccountRepository{
 
 	@Override
 	public void withdraw(int number, float value) {
-		// TODO Auto-generated method stub
+		var bankAccount = searchInTheCollection(number);
+		
+		if (bankAccount != null) {
+			if (bankAccount.withdraw(value) == true) {
+				System.out.println("\nO saque na conta número " + number + " foi efetuado com sucesso!");
+			} 
+		} else {
+			System.out.println("\nA conta número " + number + " não foi encontrada!");
+		}
 		
 	}
 
 	@Override
 	public void deposit(int number, float value) {
-		// TODO Auto-generated method stub
+		var bankAccount = searchInTheCollection(number);
+		
+		if (bankAccount != null) {
+			bankAccount.deposit(value);
+			System.out.println("\nO depósito na conta número: " + number + " foi efetuado com sucesso!");
+		} else {
+			System.out.println("\nA conta número " 
+								+ number + " não foi encontrada ou a conta destino não é uma conta corrente!");
+		}
 		
 	}
 
 	@Override
 	public void transfer(int originNumber, int destinationNumber, float value) {
-		// TODO Auto-generated method stub
+		var originBankAccount = searchInTheCollection(originNumber);
+		var destinationBankAccount = searchInTheCollection(destinationNumber);
+		
+		if(originBankAccount != null && destinationBankAccount != null) {
+			
+			if(originBankAccount.withdraw(value) == true) {
+				destinationBankAccount.deposit(value);
+				System.out.println("\nA transferência foi efetuada com sucesso!");
+			}
+		} else {
+			System.out.println("\nA conta de origem e/ou destino não foram encontradas!");
+		}
+		
+		
 		
 	}
 

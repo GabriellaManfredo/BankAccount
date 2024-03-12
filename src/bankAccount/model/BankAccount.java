@@ -65,7 +65,7 @@ public abstract class BankAccount {
 		this.accountHolder = accountHolder;
 	}
 	
-	public boolean withdrawal(float value) {
+	public boolean withdraw(float value) {
 		if (this.getBalance() < value) {
 			System.out.println("\nSaldo insuficiente!");
 			return false;

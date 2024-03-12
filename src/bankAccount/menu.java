@@ -17,9 +17,9 @@ public class menu {
 
 		Scanner scanner = new Scanner(System.in);
 
-		int option, number, numberAgency, type, birthday;
+		int option, number, numberAgency, type, birthday, destinationNumber;
 		String accountHolder;
-		float balance, overdraftLimit;
+		float balance, overdraftLimit, value;
 
 		System.out.println("\nCriar contas\n");
 
@@ -155,14 +155,14 @@ public class menu {
 					case 1 -> {
 						System.out.println("Digite o limite de crédito(R$): ");
 						overdraftLimit = scanner.nextFloat();
-						bankAccounts.update(new CurrentAccount(bankAccounts.generateNumber(), numberAgency, type,
+						bankAccounts.update(new CurrentAccount(number, numberAgency, type,
 								accountHolder, balance, overdraftLimit));
 					}
 
 					case 2 -> {
 						System.out.println("Digite o dia do aniversário da conta: ");
 						birthday = scanner.nextInt();
-						bankAccounts.update(new SavingsAccount(bankAccounts.generateNumber(), numberAgency, type,
+						bankAccounts.update(new SavingsAccount(number, numberAgency, type,
 								accountHolder, balance, birthday));
 					}
 
@@ -190,19 +190,50 @@ public class menu {
 
 			case 6:
 				System.out.println(colors.TEXT_WHITE_BOLD + "Saque\n\n");
-
+				
+				System.out.println("Digite o número da conta: ");
+				number = scanner.nextInt();
+				
+				do {
+					System.out.println("Digite o valor do saque (R$): ");
+					value = scanner.nextFloat();
+				} while (value <= 0);
+				
+				bankAccounts.withdraw(number, value);
 				keyPress();
 				break;
 
 			case 7:
 				System.out.println(colors.TEXT_WHITE_BOLD + "Depósito\n\n");
 
+				System.out.println("Digite o número da conta: ");
+				number = scanner.nextInt();
+				
+				do {
+					System.out.println("Digite o valor do depósito (R$): ");
+					value = scanner.nextFloat();
+				} while(value <= 0);
+				
+				bankAccounts.deposit(number, value);
 				keyPress();
 				break;
 
 			case 8:
 				System.out.println(colors.TEXT_WHITE_BOLD + "Transferência entre contas\n\n");
 
+				System.out.println("Digite o número da conta de origem: ");
+				number = scanner.nextInt();
+				
+				System.out.println("Digite o número da conta de destino: ");
+				destinationNumber = scanner.nextInt();
+				
+				do {
+					System.out.println("Digite o valor da transferência (R$): ");
+					value = scanner.nextFloat();
+				} while(value <= 0);
+				
+				bankAccounts.transfer(number, destinationNumber, value);
+				
 				keyPress();
 				break;
 

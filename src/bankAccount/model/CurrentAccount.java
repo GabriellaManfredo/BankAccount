@@ -27,7 +27,7 @@ public class CurrentAccount extends BankAccount {
 	// Métodos específicos
 	
 	@Override 
-		public boolean withdrawal(float value) {
+		public boolean withdraw(float value) {
 			if (this.getBalance() + this.getOverdraftLimit() < value) {
 				System.out.println("\nSaldo Insuficiente!");
 				return false;
